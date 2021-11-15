@@ -15,6 +15,13 @@ public class Song {
         this.instList = new ArrayList<>();
     }
 
+    public boolean canPerformIt(Participant p){
+        if(p.getLangList().containsAll(this.langList) && p.getGenList().containsAll(this.genList) && p.getInstList().containsAll(this.instList)){
+            return true;
+        }
+        return false;
+    }
+
     public String getTitle() {
         return title;
     }
