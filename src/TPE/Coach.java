@@ -1,7 +1,7 @@
 package TPE;
 
 import java.util.ArrayList;
-//ArrayList<String> (para copypaste, es un poco largo tipearlo)
+
 public class Coach {
     private String name;
     private String surname;
@@ -11,38 +11,53 @@ public class Coach {
         this.name = nombre;
         this.surname = apellido;
     }
-    //methods
-    public void teamAdd(Participant p){
-        this.team.add(p);
+
+    // methods
+    public void teamAdd(Participant p) {
+        if (p != null) {
+            if (!team.contains(p)) {
+                team.add(p);
+            }
+        }
     };
 
-    public ArrayList<String> getTeamInst (){
+    public void teamRemove(Participant p) {
+        if (p != null) {
+            if (team.contains(p)) {
+                team.remove(p);
+            }
+        }
+    };
+
+    public ArrayList<String> getTeamInst() {
         ArrayList<String> copy = new ArrayList<>();
         for (int i = 0; i < team.size(); i++) {
-            for (String inst:team.get(i).getInstList()) {
-                if (!copy.contains(inst)){
+            for (String inst : team.get(i).getInstList()) {
+                if (!copy.contains(inst)) {
                     copy.add(inst);
                 }
             }
         }
         return copy;
     }
-    public ArrayList<String> getTeamLang (){
+
+    public ArrayList<String> getTeamLang() {
         ArrayList<String> copy = new ArrayList<>();
         for (int i = 0; i < team.size(); i++) {
-            for (String lang:team.get(i).getLangList()) {
-                if (!copy.contains(lang)){
+            for (String lang : team.get(i).getLangList()) {
+                if (!copy.contains(lang)) {
                     copy.add(lang);
                 }
             }
         }
         return copy;
     }
-    public ArrayList<String> getTeamGen (){
+
+    public ArrayList<String> getTeamGen() {
         ArrayList<String> copy = new ArrayList<>();
         for (int i = 0; i < team.size(); i++) {
-            for (String gen:team.get(i).getGenList()) {
-                if (!copy.contains(gen)){
+            for (String gen : team.get(i).getGenList()) {
+                if (!copy.contains(gen)) {
                     copy.add(gen);
                 }
             }
@@ -50,11 +65,31 @@ public class Coach {
         return copy;
     }
 
-    public double getTeamAgeAVG (){
+    public double getTeamAgeAVG() {
         int partial = 0;
         for (int i = 0; i < team.size(); i++) {
-            partial+=this.team.get(i).getAge();
+            partial += this.team.get(i).getAge();
         }
-        return partial/team.size();
+        return partial / team.size();
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getSurname() {
+        return this.surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public ArrayList<Participant> getTeam() {
+        return new ArrayList<>(this.team);
     }
 }
