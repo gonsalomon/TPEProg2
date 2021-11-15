@@ -8,7 +8,7 @@ public class Song {
     private ArrayList<String> genList;
     private ArrayList<String> instList;
 
-    public Song(String title){
+    public Song(String title) {
         this.title = title;
         this.langList = new ArrayList<>();
         this.genList = new ArrayList<>();
@@ -23,23 +23,59 @@ public class Song {
         return new ArrayList<String>(this.langList);
     }
 
-    public void setLangList(ArrayList<String> langList) {
-        //todo
+    public void addLang(String lang) {
+        if (lang != null) {
+            if (!this.langList.contains(lang)) {
+                this.langList.add(lang);
+            }
+        }
+    }
+
+    public void removeLang(String lang) {
+        if (lang != null) {
+            if (this.langList.contains(lang)) {
+                this.langList.remove(lang);
+            }
+        }
     }
 
     public ArrayList<String> getGenList() {
         return new ArrayList<String>(this.genList);
     }
 
-    public void setGenList(ArrayList<String> genList) {
-        //todo
+    public void addGen(String gen) {
+        if (gen != null) {
+            if (!this.langList.contains(gen)) {
+                this.langList.add(gen);
+            }
+        }
+    }
+
+    public void removeGen(String gen) {
+        if (gen != null) {
+            if (this.langList.contains(gen)) {
+                this.langList.remove(gen);
+            }
+        }
     }
 
     public ArrayList<String> getInstList() {
         return new ArrayList<String>(this.instList);
     }
 
-    public void setInstList(ArrayList<String> instList) {
-        //todo
+    public void addInst(String inst) {
+        if (inst != null) {
+            if (!this.instList.contains(inst)) {
+                this.instList.add(inst);
+            }
+        }
+    }
+
+    public void removeInst(String inst) {
+        if (inst != null) {
+            if (this.instList.contains(inst)) {
+                this.instList.remove(inst);
+            }
+        }
     }
 }

@@ -1,4 +1,4 @@
-package TPE.filtros;
+package TPE.filters;
 
 import TPE.Participant;
 

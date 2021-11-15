@@ -1,6 +1,7 @@
 package TPE;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Coach {
     private String name;
@@ -10,16 +11,19 @@ public class Coach {
     public Coach(String nombre, String apellido) {
         this.name = nombre;
         this.surname = apellido;
+        this.team = new ArrayList<Participant>();
     }
 
-    // methods
+    // tengo que agregar y sacar gente del equipo
     public void teamAdd(Participant p) {
         if (p != null) {
-            if (!team.contains(p)) {
+            if (team != null) {
+                team.add(p);
+            } else if (!team.contains(p)) {
                 team.add(p);
             }
         }
-    };
+    }
 
     public void teamRemove(Participant p) {
         if (p != null) {
@@ -27,8 +31,9 @@ public class Coach {
                 team.remove(p);
             }
         }
-    };
+    }
 
+    // métodos que pide la consigna
     public ArrayList<String> getTeamInst() {
         ArrayList<String> copy = new ArrayList<>();
         for (int i = 0; i < team.size(); i++) {
@@ -62,6 +67,7 @@ public class Coach {
                 }
             }
         }
+        Collections.sort(copy);
         return copy;
     }
 
@@ -73,6 +79,7 @@ public class Coach {
         return partial / team.size();
     }
 
+    // métodos puramente funcionales (extras)
     public String getName() {
         return this.name;
     }
