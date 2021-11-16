@@ -79,6 +79,19 @@ public class Coach {
         return partial / team.size();
     }
 
+    //devuelve un group de participantes(sean grupo o solista) que cumplen con la condición
+    public Group assembleTeam(Batalla b){
+        Group contestant = new Group("Equipo de "+this.name+" "+this.surname+"!");
+        for (int i = 0; i < team.size(); i++) {
+            for (int j = 0; j < b.getSongs().size(); j++) {
+                if(b.getSongs().get(j).canPerformIt(team.get(i))){
+                    contestant.addMember(team.get(i));
+                }
+            }
+        }
+        return contestant;
+    }
+
     // métodos puramente funcionales (extras)
     public String getName() {
         return this.name;

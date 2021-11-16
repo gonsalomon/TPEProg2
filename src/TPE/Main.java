@@ -55,13 +55,13 @@ public class Main {
 
         daRules.add(reglaInst);
 
-        System.out.println(c.batalla(g1, j98, daRules));
+        
 
         CompareByAge reglaEdad = new CompareByAge();
         daRules.add(reglaEdad);
         daRules.remove(reglaInst);
 
-        System.out.println(c.batalla(g1, j98, daRules));
+        
         /*
          * falta poner a prueba el de la cantidad de géneros, y añadir más personas, lo
          * de la cant de géneros va a continuación, pero para

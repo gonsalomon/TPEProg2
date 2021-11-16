@@ -2,17 +2,17 @@ package TPE;
 
 import java.util.ArrayList;
 
-import TPE.compare.Compare;
-
 public class Contest {
     private ArrayList<Song> songList;
     private ArrayList<Coach> coachList;
     private ArrayList<Participant> partList;
+    private ArrayList<Batalla> battles;
 
     public Contest() {
         this.songList = new ArrayList<>();
         this.coachList = new ArrayList<>();
         this.partList = new ArrayList<>();
+        this.battles = new ArrayList<>();
     }
 
     public void addSong(Song song) {
@@ -31,6 +31,10 @@ public class Contest {
         }
     }
 
+    public ArrayList<Song> getSongs() {
+        return new ArrayList<Song>(songList);
+    }
+
     public void addCoach(Coach coach) {
         if (coach != null) {
             if (!coachList.contains(coach)) {
@@ -45,6 +49,10 @@ public class Contest {
                 coachList.remove(coach);
             }
         }
+    }
+
+    public ArrayList<Coach> getCoaches() {
+        return new ArrayList<Coach>(coachList);
     }
 
     public void addParticipant(Participant part) {
@@ -63,27 +71,27 @@ public class Contest {
         }
     }
 
-    /*
-     * se requiere proveer un ArrayList de Compares (que serían las reglas de la
-     * batalla) desde el contexto donde se ponga a andar una competencia (el main en
-     * nuestro caso)
-     */
-    public int batalla(Participant p1, Participant p2, ArrayList<Compare> rules) {
-        int result = 0;
-        for (int i = 0; i < rules.size(); i++) {
-            if (rules.get(i).compare(p1, p2) == 0) {
-                ArrayList<Compare> newRules = new ArrayList<Compare>(rules);
-                newRules.remove(i);
-                result += batalla(p1, p2, newRules);
+    public ArrayList<Participant> getParticipants() {
+        return new ArrayList<Participant>(partList);
+    }
+
+    public void addBattle(Batalla battle) {
+        if (battle != null) {
+            if (!battles.contains(battle)) {
+                battles.add(battle);
             }
-            result += rules.get(i).compare(p1, p2);
         }
-        if (result < 0) {
-            return -1;
-        } else if (result > 0) {
-            return 1;
-        } else {
-            return 0;
+    }
+
+    public void delBattle(Batalla battle) {
+        if (battle != null) {
+            if (battles.contains(battle)) {
+                battles.remove(battle);
+            }
         }
+    }
+
+    public ArrayList<Batalla> getBattles() {
+        return new ArrayList<Batalla>(battles);
     }
 }
