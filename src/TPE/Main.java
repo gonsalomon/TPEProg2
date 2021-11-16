@@ -2,9 +2,7 @@ package TPE;
 
 import java.util.ArrayList;
 
-import TPE.compare.Compare;
-import TPE.compare.CompareByAge;
-import TPE.compare.CompareByInst;
+import TPE.compare.*;
 
 public class Main {
     /*
@@ -12,7 +10,8 @@ public class Main {
      * probarlos en un main
      */
     public static void main(String[] args) {
-        // desconozco si estas personas existen
+        // vamos a traer buenas bandas/cantantes del pasado
+
         Member j98 = new Member("Juan Manuel", "Pérez", 23);
         j98.addInst("Guitarra");
         j98.addInst("Voz");
@@ -32,39 +31,48 @@ public class Main {
         j93.addLang("Inglés");
         j93.addGen("Rock nacional");
         j93.addGen("Pop");
-        // acá ya no son tan desconocidos
+        // van a poder enfrentarse gracias a un RNG, enjoy
         Coach c1 = new Coach("Luis", "Berdún");
         Coach c2 = new Coach("Marcelo", "Armentano");
-
+        // agrupo participants y luego los agrego a los coaches
         Group g1 = new Group("Ellas");
         g1.addMember(g92);
         g1.addMember(j93);
 
         c2.teamAdd(g1);
         c1.teamAdd(j98);
+        // creo un contest
+        Contest laVozExactas = new Contest();
+        // agrego los coaches
+        laVozExactas.addCoach(c1);
+        laVozExactas.addCoach(c2);
+        // comparators para las batallas
+        ArrayList<Compare> conds = new ArrayList<Compare>();
+        conds.add(new CompareByInst());
+        conds.add(new CompareByLang());
+        conds.add(new CompareByGen());
+        conds.add(new CompareByAge());
 
-        Contest c = new Contest();
+        // FIGHT!
+        for (Batalla b : laVozExactas.getBattles()) {// un programa puede tener más de una batalla
+            System.out.println(b.getC1().getName() + " vs " + b.getC2().getName() + "!");
+            for (int i = 0; i < b.getSongs().size(); i++) {
+                System.out.println("La canción " + i + " es " + b.getSongs().get(i).getTitle() + "!");
+                /*
+                 * algo de RNG para el concurso (?) Lo explico: lo aleatorio es para saber qué
+                 * condición se va a aplicar para cada competencia, pero sobre result guardo el
+                 * resultado de la competencia.
+                 */
+                int result = b.compete(conds.get((int) Math.round(Math.random() * conds.size())));
 
-        c.addCoach(c1);
-        c.addCoach(c2);
-        c.addParticipant(g1);
-        c.addParticipant(j98);
-
-        ArrayList<Compare> daRules = new ArrayList<Compare>();
-        CompareByInst reglaInst = new CompareByInst();
-
-        daRules.add(reglaInst);
-
-        
-
-        CompareByAge reglaEdad = new CompareByAge();
-        daRules.add(reglaEdad);
-        daRules.remove(reglaInst);
-
-        
-        /*
-         * falta poner a prueba el de la cantidad de géneros, y añadir más personas, lo
-         * de la cant de géneros va a continuación, pero para
-         */
+                if (result == 0) {
+                    System.out.println("Empate!");
+                } else if (result == 1) {
+                    System.out.println("El equipo de " + b.getC1().getName() + " gana!");
+                } else {
+                    System.out.println("El equipo de " + b.getC2().getName() + " gana!");
+                }
+            }
+        }
     }
 }

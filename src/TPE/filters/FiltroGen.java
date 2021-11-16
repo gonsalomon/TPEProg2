@@ -18,6 +18,21 @@ public class FiltroGen extends Filtro {
             }
         }
         return false;
-        // return this.gens.contains(genero);
+    }
+
+    public void addGen(String s) {
+        if (s != null) {
+            if (!this.gens.contains(s.toLowerCase())) {
+                this.gens.add(s.toLowerCase());
+            }
+        }
+    }
+
+    public void removeGen(String s) {
+        if (s != null) {
+            if (this.gens.contains(s.toLowerCase())) {
+                this.gens.remove(s.toLowerCase());
+            }
+        }
     }
 }

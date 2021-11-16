@@ -9,6 +9,12 @@ public class Member extends Participant {
         this.genList = new ArrayList<>();
         this.langList = new ArrayList<>();
         this.instList = new ArrayList<>();
+        this.miembros = null;
+    }
+
+    @Override
+    public ArrayList<Participant> getMembers() {
+        return null;
     }
 
     // formas de manejar arraylists

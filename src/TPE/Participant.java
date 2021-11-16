@@ -8,6 +8,7 @@ public abstract class Participant {
     protected ArrayList<String> genList;
     protected ArrayList<String> langList;
     protected ArrayList<String> instList;
+    protected ArrayList<Participant> miembros;
 
     public Participant(String name, int age) {
         this.name = name;
@@ -15,6 +16,7 @@ public abstract class Participant {
         genList = new ArrayList<String>();
         langList = new ArrayList<String>();
         instList = new ArrayList<String>();
+        miembros = new ArrayList<Participant>();
     }
 
     public abstract double getAge();
@@ -28,4 +30,6 @@ public abstract class Participant {
     public abstract ArrayList<String> getLangList();
 
     public abstract ArrayList<String> getInstList();
+
+    public abstract ArrayList<Participant> getMembers();
 }

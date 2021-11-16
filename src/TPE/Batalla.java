@@ -18,6 +18,17 @@ public class Batalla {
         return cond.compare(c1.assembleTeam(this), c2.assembleTeam(this));
     }
 
+    //getter/setter methods
+    public Coach getC1() {
+        Coach copy1 = new Coach(c1.getName(),c1.getSurname());
+        return copy1;
+    }
+
+    public Coach getC2() {
+        Coach copy2 = new Coach(c2.getName(),c2.getSurname());
+        return copy2;
+    }
+
     public void addSong(Song song) {
         if (song != null) {
             if (!songList.contains(song)) {
