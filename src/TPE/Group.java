@@ -31,7 +31,7 @@ public class Group extends Participant {
         return new ArrayList<Participant>(miembros);
     }
 
-    // métodos asociados a preferencias de un grupo
+    // métodos asociados a manejo de arraylists
     public void addGenPref(String gen) {
         if (gen != null) {
             int i = 0;
@@ -59,7 +59,7 @@ public class Group extends Participant {
         return new ArrayList<String>(genList);
     }
 
-    public void addLangPref(String lang) {
+    public void addLang(String lang) {
         if (lang != null) {
             if (!langList.contains(lang)) {
                 langList.add(lang);
@@ -67,7 +67,7 @@ public class Group extends Participant {
         }
     }
 
-    public void delLangPref(String lang) {
+    public void delLang(String lang) {
         if (lang != null) {
             if (langList.contains(lang)) {
                 langList.remove(lang);
@@ -80,7 +80,7 @@ public class Group extends Participant {
         return new ArrayList<String>(langList);
     }
 
-    public void addInstPref(String inst) {
+    public void addInst(String inst) {
         if (inst != null) {
             if (!instList.contains(inst)) {
                 instList.add(inst);
@@ -88,7 +88,7 @@ public class Group extends Participant {
         }
     }
 
-    public void delInstPref(String inst) {
+    public void delInst(String inst) {
         if (inst != null) {
             if (instList.contains(inst)) {
                 instList.remove(inst);

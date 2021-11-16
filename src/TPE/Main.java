@@ -10,8 +10,7 @@ public class Main {
      * probarlos en un main
      */
     public static void main(String[] args) {
-        // vamos a traer buenas bandas/cantantes del pasado
-
+        // desconozco si esta gente existe/existió
         Member j98 = new Member("Juan Manuel", "Pérez", 23);
         j98.addInst("Guitarra");
         j98.addInst("Voz");
