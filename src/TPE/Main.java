@@ -40,8 +40,13 @@ public class Main {
 
         c2.teamAdd(g1);
         c1.teamAdd(j98);
-        // creo un contest
+        // creo un contest y le agrego todas las canciones en SongList.addSongs()
         Contest laVozExactas = new Contest();
+        SongList sample = new SongList();
+        sample.addSongs();
+        for (Song s : sample.getSongs()) {
+            laVozExactas.addSong(s);
+        }
         // agrego los coaches
         laVozExactas.addCoach(c1);
         laVozExactas.addCoach(c2);
@@ -51,21 +56,33 @@ public class Main {
         conds.add(new CompareByLang());
         conds.add(new CompareByGen());
         conds.add(new CompareByAge());
-
+        // agrego las batallas y las canciones pseudoaleatorias a cada batalla
+        for (int i = 0; i < 3; i++) {
+            ArrayList<Song> smallerList = new ArrayList<Song>();
+            for (int j = 0; j < 3; j++) {
+                /* algo de RNG: de las canciones que tengo, elijo 3 al azar */
+                Song s = sample.getSongs().get((int) (Math.random() * 20));
+                smallerList.add(s);
+            }
+            laVozExactas.addBattle(new Batalla(c1, c2, smallerList));
+        }
         // FIGHT!
-        for (Batalla b : laVozExactas.getBattles()) {// un programa puede tener más de una batalla
-            System.out.println(b.getC1().getName() + " vs " + b.getC2().getName() + "!");
+        for (int k = 0; k < laVozExactas.getBattles().size(); k++) {// un programa puede tener más de una batalla
+            Batalla b = laVozExactas.getBattles().get(k);
+            System.out.println(b.getC1().getName() + " vs " + b.getC2().getName() + ".");
+            System.out.println("Esta es la batalla n° " + (k + 1) + " de la noche!");
             for (int i = 0; i < b.getSongs().size(); i++) {
-                System.out.println("La canción " + i + " es " + b.getSongs().get(i).getTitle() + "!");
+                System.out.println("La canción " + (i + 1) + " es " + b.getSongs().get(i).getTitle() + "!");
+                System.out.println("Y el ganador es...");
                 /*
-                 * algo de RNG para el concurso (?) Lo explico: lo aleatorio es para saber qué
-                 * condición se va a aplicar para cada competencia, pero sobre result guardo el
-                 * resultado de la competencia.
+                 * algo de RNG para el concurso, de nuevo. Lo explico: lo aleatorio es para
+                 * saber qué condición se va a aplicar para cada competencia, pero sobre result
+                 * guardo el resultado de la competencia.
                  */
-                int result = b.compete(conds.get((int) Math.round(Math.random() * conds.size())));
-
+                int factorRNG = (int) (Math.random() * conds.size());
+                int result = b.compete(conds.get(factorRNG));
                 if (result == 0) {
-                    System.out.println("Empate!");
+                    System.out.println("Ninguno, es un empate!");
                 } else if (result == 1) {
                     System.out.println("El equipo de " + b.getC1().getName() + " gana!");
                 } else {
