@@ -77,11 +77,4 @@ public class Member extends Participant {
     public double getAge() {
         return this.age;
     }
-
-    @Override
-    public int compareTo(Participant o) {
-        
-        
-        return 0;
-    }
 }

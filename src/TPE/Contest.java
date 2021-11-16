@@ -8,13 +8,11 @@ public class Contest {
     private ArrayList<Song> songList;
     private ArrayList<Coach> coachList;
     private ArrayList<Participant> partList;
-    private ArrayList<Song> nextMatches;
 
     public Contest() {
         this.songList = new ArrayList<>();
         this.coachList = new ArrayList<>();
         this.partList = new ArrayList<>();
-        this.nextMatches = new ArrayList<>();
     }
 
     public void addSong(Song song) {
@@ -67,10 +65,10 @@ public class Contest {
 
     /*
      * se requiere proveer un ArrayList de Compares (que serían las reglas de la
-     * batalla) desde donde se ponga a andar una competencia (el main en mi caso)
+     * batalla) desde el contexto donde se ponga a andar una competencia (el main en
+     * nuestro caso)
      */
     public int batalla(Participant p1, Participant p2, ArrayList<Compare> rules) {
-        // agregar una Song a la lista de nextMatches (TODO)
         int result = 0;
         for (int i = 0; i < rules.size(); i++) {
             if (rules.get(i).compare(p1, p2) == 0) {
@@ -80,8 +78,6 @@ public class Contest {
             }
             result += rules.get(i).compare(p1, p2);
         }
-        // nextMatches.remove(0); remueve una, pero deberían ir más canciones (las que
-        // se hagan en la presentación) (TODO)
         if (result < 0) {
             return -1;
         } else if (result > 0) {

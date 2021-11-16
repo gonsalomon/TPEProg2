@@ -2,16 +2,12 @@ package TPE;
 
 import java.util.ArrayList;
 
-import TPE.compare.*;
-
 public class Group extends Participant {
     private ArrayList<Participant> miembros;
-    private Compare cond;
 
-    public Group(String nombre, Compare cond) {
+    public Group(String nombre) {
         super(nombre, 0);
         miembros = new ArrayList<Participant>();
-        this.cond = cond;
     }
 
     // métodos asociados a miembros de un grupo
@@ -112,10 +108,5 @@ public class Group extends Participant {
             age += p.getAge();
         }
         return age / miembros.size();
-    }
-
-    @Override
-    public int compareTo(Participant p) {
-        return cond.compare(this, p);
     }
 }

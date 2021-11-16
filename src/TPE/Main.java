@@ -36,7 +36,7 @@ public class Main {
         Coach c1 = new Coach("Luis", "Berdún");
         Coach c2 = new Coach("Marcelo", "Armentano");
 
-        Group g1 = new Group("Ellas", null);
+        Group g1 = new Group("Ellas");
         g1.addMember(g92);
         g1.addMember(j93);
 

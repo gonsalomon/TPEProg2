@@ -2,7 +2,7 @@ package TPE;
 
 import java.util.ArrayList;
 
-public abstract class Participant implements Comparable<Participant> {
+public abstract class Participant {
     protected String name;
     protected int age;
     protected ArrayList<String> genList;
@@ -28,6 +28,4 @@ public abstract class Participant implements Comparable<Participant> {
     public abstract ArrayList<String> getLangList();
 
     public abstract ArrayList<String> getInstList();
-
-    public abstract int compareTo(Participant p);
 }

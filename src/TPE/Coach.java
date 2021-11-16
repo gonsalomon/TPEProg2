@@ -14,7 +14,7 @@ public class Coach {
         this.team = new ArrayList<Participant>();
     }
 
-    // tengo que agregar y sacar gente del equipo
+    // se necesita poder agregar y sacar gente del equipo
     public void teamAdd(Participant p) {
         if (p != null) {
             if (team != null) {
