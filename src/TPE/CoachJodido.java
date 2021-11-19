@@ -12,6 +12,8 @@ public class CoachJodido extends Coach {
         condiciones = new ArrayList<>();
     }
 
+    // necesito poder agregar/borrar las condiciones para que en tiempo de ejecución
+    // se pueda hacer lo que pide la consigna
     public void addCondicion(Filtro condicion) {
         if (condicion != null) {
             if (condiciones.isEmpty()) {
@@ -33,13 +35,17 @@ public class CoachJodido extends Coach {
     @Override
     public void teamAdd(Participant p) {
         if (p != null) {
-            for (Filtro f : condiciones) {
-                if (!f.cumple(p)) {
-                    return;
+            if (!condiciones.isEmpty()) {
+                int condicionesCumplidas = 0;
+                for (Filtro condicion : condiciones) {
+                    if (condicion.cumple(p)) {
+                        condicionesCumplidas++;
+                    }
                 }
-            }
-            if (!team.contains(p)) {
-                team.add(p);
+                // si cumple todas las condiciones que tengo, que entre a mi team
+                if (condicionesCumplidas == condiciones.size()) {
+                    super.teamAdd(p);
+                }
             }
         }
     }
