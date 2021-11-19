@@ -3,6 +3,8 @@ package TPE;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import TPE.filters.Filtro;
+
 public class Coach {
     private String name;
     private String surname;
@@ -80,7 +82,17 @@ public class Coach {
         return partial / team.size();
     }
 
-    
+    public ArrayList<Participant> buscar(Filtro f) {
+        ArrayList<Participant> copy = new ArrayList<>();
+        for (int i = 0; i < team.size(); i++) {
+            if (f.cumple(team.get(i))) {
+                copy.add(team.get(i));
+            }else{
+                //TODO 2: acá tengo que ver cómo me meto en el composite
+            }
+        }
+        return copy;
+    }
 
     // fitros!
     public ArrayList<Participant> getTeamByInst(String inst) {

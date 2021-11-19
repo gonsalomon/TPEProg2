@@ -20,4 +20,6 @@ public abstract class Participant {
     public abstract ArrayList<String> getLangList();
 
     public abstract ArrayList<String> getInstList();
+
+    public abstract ArrayList<Participant> getMembers();
 }

@@ -99,4 +99,11 @@ public class Member extends Participant {
     public double getAge() {
         return this.age;
     }
+
+    @Override
+    public ArrayList<Participant> getMembers() {
+        ArrayList<Participant> copy = new ArrayList<>();
+        copy.add(this);
+        return copy;
+    }
 }
