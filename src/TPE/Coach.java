@@ -80,12 +80,7 @@ public class Coach {
         return partial / team.size();
     }
 
-    // devuelve un group de participantes(sean grupo o solista) que cumplen con la
-    // condición
-    public Group assembleTeam() {
-        Group contestant = new Group("Equipo de " + this.name + " " + this.surname + "!");
-        return contestant;
-    }
+    
 
     // fitros!
     public ArrayList<Participant> getTeamByInst(String inst) {
@@ -110,18 +105,6 @@ public class Coach {
         ArrayList<Participant> copy = new ArrayList<>();
         for (int i = 0; i < team.size(); i++) {
             if (team.get(i).getAge() > age) {
-                if (!copy.contains(team.get(i))) {
-                    copy.add(team.get(i));
-                }
-            }
-        }
-        return copy;
-    }
-
-    public ArrayList<Participant> canPlay(Song song) {
-        ArrayList<Participant> copy = new ArrayList<>();
-        for (int i = 0; i < team.size(); i++) {
-            if (song.canPerformIt(team.get(i))) {
                 if (!copy.contains(team.get(i))) {
                     copy.add(team.get(i));
                 }
