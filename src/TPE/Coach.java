@@ -113,7 +113,7 @@ public class Coach {
         return copy;
     }
 
-    // métodos puramente funcionales (extras)
+    // métodos puramente funcionales
     public String getName() {
         return this.name;
     }
@@ -130,7 +130,7 @@ public class Coach {
         this.surname = surname;
     }
 
-    public ArrayList<Participant> getTeam() {
+    protected ArrayList<Participant> getTeam() {
         return new ArrayList<>(this.team);
     }
 }

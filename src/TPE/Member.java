@@ -15,11 +15,6 @@ public class Member extends Participant {
         this.instList = new ArrayList<>();
     }
 
-    @Override
-    public ArrayList<Participant> getMembers() {
-        return null;
-    }
-
     // formas de manejar arraylists
     public void addGen(String gen) {
         if (gen != null) {
@@ -103,10 +98,5 @@ public class Member extends Participant {
     @Override
     public double getAge() {
         return this.age;
-    }
-
-    @Override
-    public int getMembersCount() {
-        return 1;
     }
 }

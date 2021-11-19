@@ -34,21 +34,19 @@ public class Group extends Participant {
     @Override
     public double getAge() {
         double age = 0;
+        int members = 0;
         for (Participant p : miembros) {
             age += p.getAge();
+            members++;
         }
-        return age / getMembersCount();
+        return age / members;
     }
 
     @Override
     public ArrayList<String> getGenList() {
         ArrayList<String> copy = new ArrayList<>();
         for (int i = 0; i < miembros.size(); i++) {
-            for (String gen : miembros.get(i).getGenList()) {
-                if (!copy.contains(gen)) {
-                    copy.add(gen);
-                }
-            }
+            // TODO 1: problema con la intersección
         }
         return copy;
     }
@@ -77,13 +75,5 @@ public class Group extends Participant {
             }
         }
         return copy;
-    }
-
-    public int getMembersCount() {
-        int parcial = 0;
-        for (Participant p : miembros) {
-            parcial += p.getMembersCount();
-        }
-        return parcial;
     }
 }
