@@ -3,13 +3,16 @@ package TPE;
 import java.util.ArrayList;
 
 public class Member extends Participant {
+    private int age;
+    private ArrayList<String> genList;
+    private ArrayList<String> langList;
+    private ArrayList<String> instList;
 
     public Member(String name, String surname, int age) {
-        super(name + " " + surname, age);
+        super(name + " " + surname);
         this.genList = new ArrayList<>();
         this.langList = new ArrayList<>();
         this.instList = new ArrayList<>();
-        this.miembros = null;
     }
 
     @Override
@@ -68,19 +71,42 @@ public class Member extends Participant {
 
     // getters de los arraylist
     public ArrayList<String> getGenList() {
-        return new ArrayList<String>(this.genList);
+        ArrayList<String> copy = new ArrayList<>();
+        for (String gen : genList) {
+            if (!copy.contains(gen)) {
+                copy.add(gen);
+            }
+        }
+        return copy;
     }
 
     public ArrayList<String> getLangList() {
-        return new ArrayList<String>(this.langList);
+        ArrayList<String> copy = new ArrayList<>();
+        for (String lang : langList) {
+            if (!copy.contains(lang)) {
+                copy.add(lang);
+            }
+        }
+        return copy;
     }
 
     public ArrayList<String> getInstList() {
-        return new ArrayList<String>(this.instList);
+        ArrayList<String> copy = new ArrayList<>();
+        for (String inst : instList) {
+            if (!copy.contains(inst)) {
+                copy.add(inst);
+            }
+        }
+        return copy;
     }
 
     @Override
     public double getAge() {
         return this.age;
+    }
+
+    @Override
+    public int getMembersCount() {
+        return 1;
     }
 }

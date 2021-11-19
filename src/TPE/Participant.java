@@ -4,19 +4,9 @@ import java.util.ArrayList;
 
 public abstract class Participant {
     protected String name;
-    protected int age;
-    protected ArrayList<String> genList;
-    protected ArrayList<String> langList;
-    protected ArrayList<String> instList;
-    protected ArrayList<Participant> miembros;
 
-    public Participant(String name, int age) {
+    public Participant(String name) {
         this.name = name;
-        this.age = age;
-        genList = new ArrayList<String>();
-        langList = new ArrayList<String>();
-        instList = new ArrayList<String>();
-        miembros = new ArrayList<Participant>();
     }
 
     public abstract double getAge();
@@ -32,4 +22,6 @@ public abstract class Participant {
     public abstract ArrayList<String> getInstList();
 
     public abstract ArrayList<Participant> getMembers();
+
+    public abstract int getMembersCount();
 }

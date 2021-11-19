@@ -1,38 +1,20 @@
 package TPE.filters;
 
-import java.util.ArrayList;
-
 import TPE.Participant;
 
 public class FiltroGen extends Filtro {
-    private ArrayList<String> gens;
+    private String genBuscada;
 
-    public FiltroGen() {
-        this.gens = new ArrayList<String>();
+    public FiltroGen(String gen) {
+        this.genBuscada = gen;
     }
 
     public boolean cumple(Participant p) {
-        for (String gen : this.gens) {
-            if (p.getGenList().contains(gen)) {
+        if (p != null) {
+            if (p.getGenList().contains(genBuscada)) {
                 return true;
             }
         }
         return false;
-    }
-
-    public void addGen(String s) {
-        if (s != null) {
-            if (!this.gens.contains(s.toLowerCase())) {
-                this.gens.add(s.toLowerCase());
-            }
-        }
-    }
-
-    public void removeGen(String s) {
-        if (s != null) {
-            if (this.gens.contains(s.toLowerCase())) {
-                this.gens.remove(s.toLowerCase());
-            }
-        }
     }
 }

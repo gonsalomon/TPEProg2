@@ -6,8 +6,8 @@ public class Group extends Participant {
     private ArrayList<Participant> miembros;
 
     public Group(String nombre) {
-        super(nombre, 0);
-        miembros = new ArrayList<Participant>();
+        super(nombre);
+        miembros = new ArrayList<>();
     }
 
     // métodos asociados a miembros de un grupo
@@ -31,82 +31,59 @@ public class Group extends Participant {
         return new ArrayList<Participant>(miembros);
     }
 
-    // métodos asociados a manejo de arraylists
-    public void addGenPref(String gen) {
-        if (gen != null) {
-            int i = 0;
-            for (Participant p : miembros) {
-                if (p.getGenList().contains(gen)) {
-                    i++;
-                }
-            }
-            if (i == miembros.size()) {
-                genList.add(gen);
-            }
-        }
-    }
-
-    public void delGenPref(String gen) {
-        if (gen != null) {
-            if (genList.contains(gen)) {
-                genList.remove(gen);
-            }
-        }
-    }
-
-    @Override
-    public ArrayList<String> getGenList() {
-        return new ArrayList<String>(genList);
-    }
-
-    public void addLang(String lang) {
-        if (lang != null) {
-            if (!langList.contains(lang)) {
-                langList.add(lang);
-            }
-        }
-    }
-
-    public void delLang(String lang) {
-        if (lang != null) {
-            if (langList.contains(lang)) {
-                langList.remove(lang);
-            }
-        }
-    }
-
-    @Override
-    public ArrayList<String> getLangList() {
-        return new ArrayList<String>(langList);
-    }
-
-    public void addInst(String inst) {
-        if (inst != null) {
-            if (!instList.contains(inst)) {
-                instList.add(inst);
-            }
-        }
-    }
-
-    public void delInst(String inst) {
-        if (inst != null) {
-            if (instList.contains(inst)) {
-                instList.remove(inst);
-            }
-        }
-    }
-
-    @Override
-    public ArrayList<String> getInstList() {
-        return new ArrayList<String>(instList);
-    }
-
     @Override
     public double getAge() {
         double age = 0;
         for (Participant p : miembros) {
             age += p.getAge();
         }
-        return age / miembros.size();
+        return age / getMembersCount();
+    }
+
+    @Override
+    public ArrayList<String> getGenList() {
+        ArrayList<String> copy = new ArrayList<>();
+        for (int i = 0; i < miembros.size(); i++) {
+            for (String gen : miembros.get(i).getGenList()) {
+                if (!copy.contains(gen)) {
+                    copy.add(gen);
+                }
+            }
+        }
+        return copy;
+    }
+
+    @Override
+    public ArrayList<String> getLangList() {
+        ArrayList<String> copy = new ArrayList<>();
+        for (int i = 0; i < miembros.size(); i++) {
+            for (String lang : miembros.get(i).getLangList()) {
+                if (!copy.contains(lang)) {
+                    copy.add(lang);
+                }
+            }
+        }
+        return copy;
+    }
+
+    @Override
+    public ArrayList<String> getInstList() {
+        ArrayList<String> copy = new ArrayList<>();
+        for (int i = 0; i < miembros.size(); i++) {
+            for (String inst : miembros.get(i).getInstList()) {
+                if (!copy.contains(inst)) {
+                    copy.add(inst);
+                }
+            }
+        }
+        return copy;
+    }
+
+    public int getMembersCount() {
+        int parcial = 0;
+        for (Participant p : miembros) {
+            parcial += p.getMembersCount();
+        }
+        return parcial;
     }
 }

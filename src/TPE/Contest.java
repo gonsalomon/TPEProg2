@@ -6,13 +6,11 @@ public class Contest {
     private ArrayList<Song> songList;
     private ArrayList<Coach> coachList;
     private ArrayList<Participant> partList;
-    private ArrayList<Batalla> battles;
 
     public Contest() {
         this.songList = new ArrayList<>();
         this.coachList = new ArrayList<>();
         this.partList = new ArrayList<>();
-        this.battles = new ArrayList<>();
     }
 
     public void addSong(Song song) {
@@ -73,25 +71,5 @@ public class Contest {
 
     public ArrayList<Participant> getParticipants() {
         return new ArrayList<Participant>(partList);
-    }
-
-    public void addBattle(Batalla battle) {
-        if (battle != null) {
-            if (!battles.contains(battle)) {
-                battles.add(battle);
-            }
-        }
-    }
-
-    public void delBattle(Batalla battle) {
-        if (battle != null) {
-            if (battles.contains(battle)) {
-                battles.remove(battle);
-            }
-        }
-    }
-
-    public ArrayList<Batalla> getBattles() {
-        return new ArrayList<Batalla>(battles);
     }
 }

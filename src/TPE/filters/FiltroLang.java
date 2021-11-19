@@ -1,39 +1,21 @@
 package TPE.filters;
 
-import java.util.ArrayList;
-
 import TPE.Participant;
 
 public class FiltroLang extends Filtro {
 
-    private ArrayList<String> lang;
+    private String langBuscado;
 
-    public FiltroLang() {
-        this.lang = new ArrayList<String>();
+    public FiltroLang(String lang) {
+        this.langBuscado = lang;
     }
 
     public boolean cumple(Participant p) {
-        for (String l : lang) {
-            if (p.getLangList().contains(l)) {
+        if (p != null) {
+            if (p.getLangList().contains(langBuscado)) {
                 return true;
             }
         }
         return false;
-    }
-
-    public void addLang(String s) {
-        if (s != null) {
-            if (!lang.contains(s.toLowerCase())) {
-                lang.add(s.toLowerCase());
-            }
-        }
-    }
-
-    public void removeLang(String s) {
-        if (s != null) {
-            if (lang.contains(s.toLowerCase())) {
-                lang.remove(s.toLowerCase());
-            }
-        }
     }
 }
