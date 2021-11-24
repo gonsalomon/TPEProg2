@@ -1,13 +1,15 @@
 package TPE.comparators;
 
+import java.util.Comparator;
+
 import TPE.Participant;
 import TPE.Song;
 
-public abstract class Comparator {
+public abstract class Comparador implements Comparator<Participant> {
     private Song song;
-    protected Comparator next;
+    protected Comparador next;
 
-    public Comparator(Song song, Comparator next) {
+    public Comparador(Song song, Comparador next) {
         this.song = song;
         this.next = next;
     }
@@ -16,7 +18,7 @@ public abstract class Comparator {
         return song;
     }
 
-    public Comparator getNext() {
+    public Comparador getNext() {
         return next;
     }
 

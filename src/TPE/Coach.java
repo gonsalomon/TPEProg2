@@ -3,7 +3,7 @@ package TPE;
 import java.util.ArrayList;
 import java.util.Collections;
 
-import TPE.comparators.Comparator;
+import TPE.comparators.Comparador;
 import TPE.filters.Filtro;
 
 public class Coach {
@@ -113,7 +113,7 @@ public class Coach {
         return new ArrayList<>(this.team);
     }
 
-    public Group assembleTeam(Comparator c) {
+    public Group assembleTeam(Comparador c) {
         // el armado de este string se hace para dar un nombre único al grupo, no para
         // println! los println están en el main
         Group copy = new Group(

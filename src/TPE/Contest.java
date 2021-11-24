@@ -2,11 +2,13 @@ package TPE;
 
 import java.util.ArrayList;
 
+import TPE.comparators.Comparador;
+
 public class Contest {
     private ArrayList<Song> songList;
     private ArrayList<Coach> coachList;
     private ArrayList<Participant> partList;
-    private TPE.comparators.Comparator condicionVictoria;
+    private Comparador condicionVictoria;
 
     public Contest() {
         this.songList = new ArrayList<>();
@@ -75,7 +77,7 @@ public class Contest {
         return new ArrayList<Participant>(partList);
     }
 
-    public void setCondicionVictoria(TPE.comparators.Comparator condicionVictoria) {
+    public void setCondicionVictoria(Comparador condicionVictoria) {
         this.condicionVictoria = condicionVictoria;
     }
 

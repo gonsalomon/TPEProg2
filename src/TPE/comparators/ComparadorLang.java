@@ -3,16 +3,17 @@ package TPE.comparators;
 import TPE.Participant;
 import TPE.Song;
 
-public class ComparatorGen extends Comparator {
-    public ComparatorGen(Song song, Comparator next) {
+public class ComparadorLang extends Comparador {
+    public ComparadorLang(Song song, Comparador next) {
         super(song, next);
     }
 
+    @Override
     public int compare(Participant p1, Participant p2) {
         // 1: gana p1. -1: gana p2. 0: empate
-        if (p1.getGenList().size() < p2.getGenList().size()) {
+        if (p1.getLangList().size() < p2.getLangList().size()) {
             return 1;
-        } else if (p1.getGenList().size() > p2.getGenList().size()) {
+        } else if (p1.getLangList().size() > p2.getLangList().size()) {
             return -1;
         } else {
             if (next != null) {

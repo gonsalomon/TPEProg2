@@ -3,10 +3,10 @@ package TPE.comparators;
 import TPE.Participant;
 import TPE.Song;
 
-public class ComparatorNOT extends Comparator {
-    private Comparator comparator;
+public class ComparadorNOT extends Comparador {
+    private Comparador comparator;
 
-    public ComparatorNOT(Song song, Comparator next, Comparator comparator) {
+    public ComparadorNOT(Song song, Comparador next, Comparador comparator) {
         super(song, next);
         this.comparator = comparator;
     }

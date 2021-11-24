@@ -3,11 +3,11 @@ package TPE.comparators;
 import TPE.Participant;
 import TPE.Song;
 
-public class ComparatorOR extends Comparator {
-    Comparator c1;
-    Comparator c2;
+public class ComparadorOR extends Comparador {
+    Comparador c1;
+    Comparador c2;
 
-    public ComparatorOR(Song song, Comparator next, Comparator c1, Comparator c2) {
+    public ComparadorOR(Song song, Comparador next, Comparador c1, Comparador c2) {
         super(song, next);
         this.c1 = c1;
         this.c2 = c2;
