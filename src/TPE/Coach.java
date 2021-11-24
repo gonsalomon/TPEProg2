@@ -107,20 +107,31 @@ public class Coach {
         this.surname = surname;
     }
 
-    // protejo el getTeam, pero se puede hacer un assembleTeam para una song vacía
-    // en requerimientos y se bypassea el protected
-    protected ArrayList<Participant> getTeam() {
+    public ArrayList<Participant> getTeam() {
         return new ArrayList<>(this.team);
     }
 
     public Group assembleTeam(Comparador c) {
-        // el armado de este string se hace para dar un nombre único al grupo, no para
-        // println! los println están en el main
+        // el armado de este string se hace para dar un nombre único al grupo, NUNCA
+        // para println! los println están en el main
         Group copy = new Group(
                 "Equipo de " + this.name + " " + this.surname + " para la canción: " + c.getSong().getTitle() + "!");
         for (int i = 0; i < team.size(); i++) {
             // armar team para la cancion s, con un new comparator
         }
         return copy;
+    }
+
+    public ArrayList<Participant> teamSort(Comparador c) {
+        ArrayList<Participant> sortedTeam = new ArrayList<Participant>(this.team);
+        /*
+         * esto es lo que deben estar evaluando, para mí: que se sepa que existe un
+         * collections.sort que usa un comparator (el java.util.Comparator) y que se
+         * pueda usar para ordenar una lista (en este caso, el team del coach). punto
+         * para Luis y su reiterada sugerencia del uso de los Vector, esto también
+         * funcionaría en ese caso (un Vector<T> implementa Collection<T>)
+         */
+        Collections.sort(sortedTeam, c);
+        return sortedTeam;
     }
 }

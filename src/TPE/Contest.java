@@ -77,6 +77,10 @@ public class Contest {
         return new ArrayList<Participant>(partList);
     }
 
+    public Comparador getCondicionVictoria() {
+        return condicionVictoria;
+    }
+
     public void setCondicionVictoria(Comparador condicionVictoria) {
         this.condicionVictoria = condicionVictoria;
     }

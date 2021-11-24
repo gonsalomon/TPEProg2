@@ -49,7 +49,7 @@ public class Main {
         // agrego los coaches al contest (con los integrantes ya establecidos)
         laVozExactas.addCoach(c1);
         laVozExactas.addCoach(c2);
-        // acá se establecen los comparadores para las batallas, en la 54
+        // acá se establecen los comparadores para las batallas, en la 53
         Comparador c = new ComparadorInst(laVozExactas.getSongs().get(0), null);
         laVozExactas.setCondicionVictoria(c);
         laVozExactas.compete(c1, c2);
@@ -57,9 +57,10 @@ public class Main {
          * NOTA FINAL: ya sé, tenía que ponerle instrumentos, lenguajes y géneros a cada
          * canción; pero no llegaba bien a sacar cosas innecesarias y tener andando lo
          * que sí se necesitaba. gracias por formarme, fue un cuatrimestre hermoso y
-         * esta materia también lo fue. PD: quería hacer algo pseudoaleatorio con
-         * Math.random y divertirme pensando que estaba desarrollando un juego, o como
-         * mínimo, algo como un dado, que es un poquito impredecible
+         * esta materia también lo fue. quedaron muchas funciones por emplear en
+         * ejecución, pero ninguna daba error ya. PD: quería hacer algo pseudoaleatorio
+         * con Math.random y divertirme pensando que estaba desarrollando un juego, o
+         * como mínimo, algo como un dado, que es un poquito impredecible
          */
     }
 }
