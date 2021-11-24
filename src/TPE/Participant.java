@@ -1,6 +1,7 @@
 package TPE;
 
 import java.util.ArrayList;
+import TPE.filters.*;
 
 public abstract class Participant {
     protected String name;
@@ -14,6 +15,8 @@ public abstract class Participant {
     public String getName() {
         return name;
     }
+
+    public abstract ArrayList<Participant> buscar(Filtro f);
 
     public abstract ArrayList<String> getGenList();
 

@@ -3,10 +3,10 @@ package TPE;
 import java.util.ArrayList;
 
 public class Song {
-    private String title;
-    private ArrayList<String> langList;
-    private ArrayList<String> genList;
-    private ArrayList<String> instList;
+    protected String title;
+    protected ArrayList<String> langList;
+    protected ArrayList<String> genList;
+    protected ArrayList<String> instList;
 
     public Song(String title) {
         this.title = title;
@@ -16,9 +16,12 @@ public class Song {
     }
 
     public boolean canPerformIt(Participant p) {
-        if (p.getLangList().containsAll(this.langList) && p.getGenList().containsAll(this.genList)
-                && p.getInstList().containsAll(this.instList)) {
-            return true;
+        if (p.getLangList().containsAll(this.langList)) {
+            for (String gen : this.genList) {
+                if (p.getGenList().contains(gen)) {
+                    return true;
+                }
+            }
         }
         return false;
     }
@@ -27,6 +30,7 @@ public class Song {
         return title;
     }
 
+    // get, add, remove para los 3 arraylist
     public ArrayList<String> getLangList() {
         return new ArrayList<String>(this.langList);
     }

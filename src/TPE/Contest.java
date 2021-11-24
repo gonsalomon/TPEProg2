@@ -6,11 +6,13 @@ public class Contest {
     private ArrayList<Song> songList;
     private ArrayList<Coach> coachList;
     private ArrayList<Participant> partList;
+    private TPE.comparators.Comparator condicionVictoria;
 
     public Contest() {
         this.songList = new ArrayList<>();
         this.coachList = new ArrayList<>();
         this.partList = new ArrayList<>();
+        this.condicionVictoria = null;
     }
 
     public void addSong(Song song) {
@@ -71,5 +73,17 @@ public class Contest {
 
     public ArrayList<Participant> getParticipants() {
         return new ArrayList<Participant>(partList);
+    }
+
+    public void setCondicionVictoria(TPE.comparators.Comparator condicionVictoria) {
+        this.condicionVictoria = condicionVictoria;
+    }
+
+    public int compete(Coach c1, Coach c2) {
+        if (c1 == null || c2 == null) {
+            return 0;
+        } else {
+            return condicionVictoria.compare(c1.assembleTeam(condicionVictoria), c2.assembleTeam(condicionVictoria));
+        }
     }
 }

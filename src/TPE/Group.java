@@ -1,6 +1,7 @@
 package TPE;
 
 import java.util.ArrayList;
+import TPE.filters.*;
 
 public class Group extends Participant {
     private ArrayList<Participant> miembros;
@@ -44,11 +45,16 @@ public class Group extends Participant {
 
     @Override
     public ArrayList<String> getGenList() {
-        ArrayList<String> copy = new ArrayList<>();
-        for (int i = 0; i < miembros.size(); i++) {
-            // TODO 1: problema con la intersección
+        ArrayList<String> comunes = miembros.get(0).getGenList();
+        for (int i = 1; i < miembros.size(); i++) {
+            ArrayList<String> evaluados = miembros.get(i).getGenList();
+            for (String gen : comunes) {
+                if (!evaluados.contains(gen)) {
+                    comunes.remove(gen);
+                }
+            }
         }
-        return copy;
+        return comunes;
     }
 
     @Override
@@ -72,6 +78,18 @@ public class Group extends Participant {
                 if (!copy.contains(inst)) {
                     copy.add(inst);
                 }
+            }
+        }
+        return copy;
+    }
+
+    public ArrayList<Participant> buscar(Filtro f) {
+        ArrayList<Participant> copy = new ArrayList<>();
+        if (f.cumple(this)) {
+            copy.add(this);
+        }else{
+            for (Participant miembro : miembros) {
+                copy.addAll(miembro.buscar(f));
             }
         }
         return copy;

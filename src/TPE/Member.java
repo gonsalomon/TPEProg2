@@ -1,6 +1,7 @@
 package TPE;
 
 import java.util.ArrayList;
+import TPE.filters.*;
 
 public class Member extends Participant {
     private int age;
@@ -66,33 +67,15 @@ public class Member extends Participant {
 
     // getters de los arraylist
     public ArrayList<String> getGenList() {
-        ArrayList<String> copy = new ArrayList<>();
-        for (String gen : genList) {
-            if (!copy.contains(gen)) {
-                copy.add(gen);
-            }
-        }
-        return copy;
+        return new ArrayList<>(genList);
     }
 
     public ArrayList<String> getLangList() {
-        ArrayList<String> copy = new ArrayList<>();
-        for (String lang : langList) {
-            if (!copy.contains(lang)) {
-                copy.add(lang);
-            }
-        }
-        return copy;
+        return new ArrayList<>(langList);
     }
 
     public ArrayList<String> getInstList() {
-        ArrayList<String> copy = new ArrayList<>();
-        for (String inst : instList) {
-            if (!copy.contains(inst)) {
-                copy.add(inst);
-            }
-        }
-        return copy;
+        return new ArrayList<>(instList);
     }
 
     @Override
@@ -104,6 +87,15 @@ public class Member extends Participant {
     public ArrayList<Participant> getMembers() {
         ArrayList<Participant> copy = new ArrayList<>();
         copy.add(this);
+        return copy;
+    }
+
+    @Override
+    public ArrayList<Participant> buscar(Filtro f) {
+        ArrayList<Participant> copy = new ArrayList<>();
+        if (f.cumple(this)) {
+            copy.add(this);
+        }
         return copy;
     }
 }

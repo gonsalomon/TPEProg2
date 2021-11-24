@@ -3,6 +3,7 @@ package TPE;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import TPE.comparators.Comparator;
 import TPE.filters.Filtro;
 
 public class Coach {
@@ -84,48 +85,12 @@ public class Coach {
 
     public ArrayList<Participant> buscar(Filtro f) {
         ArrayList<Participant> copy = new ArrayList<>();
-        for (int i = 0; i < team.size(); i++) {
-            if (f.cumple(team.get(i))) {
-                copy.add(team.get(i));
-            }else{
-                //TODO 2: acá tengo que ver cómo me meto en el composite
-            }
+        for (Participant p : this.team) {
+            copy.addAll(p.buscar(f));
         }
         return copy;
     }
 
-    // fitros!
-    public ArrayList<Participant> getTeamByInst(String inst) {
-        ArrayList<Participant> copy = new ArrayList<>();
-
-        return copy;
-    }
-
-    public ArrayList<Participant> getTeamByLang(String lang) {
-        ArrayList<Participant> copy = new ArrayList<>();
-
-        return copy;
-    }
-
-    public ArrayList<Participant> getTeamByGen(String gen) {
-        ArrayList<Participant> copy = new ArrayList<>();
-
-        return copy;
-    }
-
-    public ArrayList<Participant> getMayoresEnTeam(int age) {
-        ArrayList<Participant> copy = new ArrayList<>();
-        for (int i = 0; i < team.size(); i++) {
-            if (team.get(i).getAge() > age) {
-                if (!copy.contains(team.get(i))) {
-                    copy.add(team.get(i));
-                }
-            }
-        }
-        return copy;
-    }
-
-    // métodos puramente funcionales
     public String getName() {
         return this.name;
     }
@@ -142,7 +107,20 @@ public class Coach {
         this.surname = surname;
     }
 
+    // protejo el getTeam, pero se puede hacer un assembleTeam para una song vacía
+    // en requerimientos y se bypassea el protected
     protected ArrayList<Participant> getTeam() {
         return new ArrayList<>(this.team);
+    }
+
+    public Group assembleTeam(Comparator c) {
+        // el armado de este string se hace para dar un nombre único al grupo, no para
+        // println! los println están en el main
+        Group copy = new Group(
+                "Equipo de " + this.name + " " + this.surname + " para la canción: " + c.getSong().getTitle() + "!");
+        for (int i = 0; i < team.size(); i++) {
+            // armar team para la cancion s, con un new comparator
+        }
+        return copy;
     }
 }
