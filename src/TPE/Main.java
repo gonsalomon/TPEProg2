@@ -1,5 +1,7 @@
 package TPE;
 
+import java.util.Comparator;
+
 import TPE.comparators.*;
 
 public class Main {
@@ -50,7 +52,7 @@ public class Main {
         laVozExactas.addCoach(c1);
         laVozExactas.addCoach(c2);
         // acá se establecen los comparadores para las batallas, en la 53
-        Comparador c = new ComparadorInst(laVozExactas.getSongs().get(0), null);
+        Comparator<Participant> c = new ComparadorInst();
         laVozExactas.setCondicionVictoria(c);
         laVozExactas.compete(c1, c2);
         /*

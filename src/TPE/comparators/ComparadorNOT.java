@@ -1,18 +1,18 @@
 package TPE.comparators;
 
+import java.util.Comparator;
+
 import TPE.Participant;
-import TPE.Song;
 
-public class ComparadorNOT extends Comparador {
-    private Comparador comparator;
+public class ComparadorNOT implements Comparator<Participant> {
+    private Comparator<Participant> inverse;
 
-    public ComparadorNOT(Song song, Comparador next, Comparador comparator) {
-        super(song, next);
-        this.comparator = comparator;
+    public ComparadorNOT(Comparator<Participant> comparator) {
+        this.inverse = comparator;
     }
 
     @Override
     public int compare(Participant p1, Participant p2) {
-        return -1 * comparator.compare(p1, p2);
+        return -1 * inverse.compare(p1, p2);
     }
 }

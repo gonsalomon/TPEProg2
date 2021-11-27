@@ -1,26 +1,12 @@
 package TPE.comparators;
 
+import java.util.Comparator;
+
 import TPE.Participant;
-import TPE.Song;
 
-public class ComparadorLang extends Comparador {
-    public ComparadorLang(Song song, Comparador next) {
-        super(song, next);
-    }
-
+public class ComparadorLang implements Comparator<Participant> {
     @Override
     public int compare(Participant p1, Participant p2) {
-        // 1: gana p1. -1: gana p2. 0: empate
-        if (p1.getLangList().size() < p2.getLangList().size()) {
-            return 1;
-        } else if (p1.getLangList().size() > p2.getLangList().size()) {
-            return -1;
-        } else {
-            if (next != null) {
-                return next.compare(p1, p2);
-            } else {
-                return 0;
-            }
-        }
+        return p1.getLangList().size() - p2.getLangList().size();
     }
 }

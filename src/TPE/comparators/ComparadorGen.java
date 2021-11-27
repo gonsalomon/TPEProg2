@@ -1,25 +1,12 @@
 package TPE.comparators;
 
-import TPE.Participant;
-import TPE.Song;
+import java.util.Comparator;
 
-public class ComparadorGen extends Comparador {
-    public ComparadorGen(Song song, Comparador next) {
-        super(song, next);
-    }
+import TPE.Participant;
+
+public class ComparadorGen implements Comparator<Participant> {
 
     public int compare(Participant p1, Participant p2) {
-        // 1: gana p1. -1: gana p2. 0: empate
-        if (p1.getGenList().size() < p2.getGenList().size()) {
-            return 1;
-        } else if (p1.getGenList().size() > p2.getGenList().size()) {
-            return -1;
-        } else {
-            if (next != null) {
-                return next.compare(p1, p2);
-            } else {
-                return 0;
-            }
-        }
+        return p1.getGenList().size() - p2.getGenList().size();
     }
 }

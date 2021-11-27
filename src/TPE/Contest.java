@@ -1,14 +1,13 @@
 package TPE;
 
 import java.util.ArrayList;
-
-import TPE.comparators.Comparador;
+import java.util.Comparator;
 
 public class Contest {
     private ArrayList<Song> songList;
     private ArrayList<Coach> coachList;
     private ArrayList<Participant> partList;
-    private Comparador condicionVictoria;
+    private Comparator<Participant> condicionVictoria;
 
     public Contest() {
         this.songList = new ArrayList<>();
@@ -77,11 +76,11 @@ public class Contest {
         return new ArrayList<Participant>(partList);
     }
 
-    public Comparador getCondicionVictoria() {
+    public Comparator<Participant> getCondicionVictoria() {
         return condicionVictoria;
     }
 
-    public void setCondicionVictoria(Comparador condicionVictoria) {
+    public void setCondicionVictoria(Comparator<Participant> condicionVictoria) {
         this.condicionVictoria = condicionVictoria;
     }
 
@@ -89,7 +88,7 @@ public class Contest {
         if (c1 == null || c2 == null) {
             return 0;
         } else {
-            return condicionVictoria.compare(c1.assembleTeam(condicionVictoria), c2.assembleTeam(condicionVictoria));
+            return condicionVictoria.compare(c1.teamSort(condicionVictoria), c2.teamSort(condicionVictoria));
         }
     }
 }
