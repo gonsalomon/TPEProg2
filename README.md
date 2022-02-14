@@ -1,3 +1,2 @@
 # TPEProg2
-Work for Programación 2 (an uni course) on Java
-We had to study Object Oriented Programming, plus a design pattern, Composite. We then proceeded to implement Composite in a real-world scenario.
+A subject called Programming 2 asked for a project (for university). We studied Object Oriented Programming, plus a design pattern, Composite. After that, we proceeded to implement Composite in a real-world scenario.
